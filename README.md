@@ -79,13 +79,11 @@ Sample Query Results:
 
 #### MVP Libraries & Dependencies
 
-> Use this section to list the key supporting libraries and their role in the project.
-
 |   Library    | Description                                |
 | :----------: | :----------------------------------------- |
-|    React     | _Lorem ipsum dolor sit amet, consectetur._ |
-| React Router | _Lorem ipsum dolor sit amet, consectetur._ |
-| React Spring | _Lorem ipsum dolor sit amet, consectetur._ |
+|    React     | _Create a react app_ |
+| React Router | _Route between different pages_ |
+
 
 <br>
 
@@ -136,8 +134,6 @@ src
 <br>
 
 ### Post-MVP
-
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
 
 - _Use the 5 greeks to create a mathmetical equation that gives real time buy/sell options data_
 - _Connect a live news api that relates to finance_
