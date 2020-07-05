@@ -1,13 +1,12 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect, Params } from 'react';
 import './App.css';
 import { Route, Link } from 'react-router-dom'
 import axios from 'axios'
 import PreviousStats from './PreviousStats';
 import GoodBuy from "./GoodBuy"
 
-
 function Stock(props) {
-
+  
   let [stockMetrics, changeStockMetrics] = useState([])
   let [stockNews, changeStockNews] = useState([])
   let [stockNews2, changeStockNews2] = useState([])
@@ -16,8 +15,10 @@ function Stock(props) {
 
   useEffect(() => {
 
+
     const apiCall = async () => {
-      const data = await axios(`https://cloud.iexapis.com/stable/stock/amzn/batch?types=quote,news,chart&range=1m&last=10&token=pk_bd42dc5ddd804573b2e313f99b21a0a4`)
+      
+      const data = await axios(`https://cloud.iexapis.com/stable/stock/msft/batch?types=quote,news,chart&range=1m&last=10&token=pk_bd42dc5ddd804573b2e313f99b21a0a4`)
       console.log(data.data)
 
       changeStockMetrics(data.data.quote)
@@ -42,7 +43,7 @@ function Stock(props) {
 
   return (
     <>
-      <body>
+      <main>
       <h2>{stockMetrics.companyName}</h2>
       <div className="metrics-container">
         <div className="metrics-container1">
@@ -89,8 +90,8 @@ function Stock(props) {
       <div>
           <PreviousStats data={prevStockMetrics} />
           <GoodBuy data={stockMetrics} />
-      </div>
-      </body>
+        </div>
+        </main>
     </>
   )
 

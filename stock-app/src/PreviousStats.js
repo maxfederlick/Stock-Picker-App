@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Component } from 'react'
+import React, { useState, useEffect, Component } from 'react'
 
 
 export default function PreviousStats(props) {
@@ -7,21 +7,27 @@ export default function PreviousStats(props) {
 
   return (
     <div>
-      <p className="buttons1" onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}><strong>Show Me Yesterday's Data</strong>
-      </p>
+      <div className="buttons">
+        <button className="button1" onClick={() => setIsShown(true)}
+          onMouseClick={() => setIsShown(false)}><strong>Show Me Yesterday's Data</strong>
+        </button>
+      </div>
 
       {isShown && (
 
         <div className="hidden-data">
-          <p>Date: {props.data.date}</p>
-          <p>Change:${props.data.change} ({props.data.changePercent}%)</p>
-          <p>Change over time: {props.data.changeOverTime}</p>
-          <p>High: {props.data.high}</p>
-          <p>Low: {props.data.low}</p>
-          <p>Close: {props.data.uClose}</p>
-          <p>Open: {props.data.uOpen}</p>
-          <p>Volume: {props.data.uVolume}</p>
+          <div className="hidden-data1">
+            <p>Date: {props.data.date}</p>
+            <p>Change:${props.data.change} ({props.data.changePercent}%)</p>
+            <p>Change over time: {props.data.changeOverTime}</p>
+            <p>High: {props.data.high}</p>
+          </div>
+          <div className="hidden-data2">
+            <p>Low: {props.data.low}</p>
+            <p>Close: {props.data.uClose}</p>
+            <p>Open: {props.data.uOpen}</p>
+            <p>Volume: {props.data.uVolume}</p>
+          </div>
         </div>
 
       )}

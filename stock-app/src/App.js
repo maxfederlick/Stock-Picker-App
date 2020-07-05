@@ -1,23 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Route, Link } from 'react-router-dom'
+import { Route, withRouter, Link } from 'react-router-dom'
 import Stock from "./Stock"
 import Header from "./Header"
 import Footer from "./Footer"
+import Homepage from "./Homepage"
 
-function App() {
-
-  let [stockName, searchStockName] = useState([]),
-
-
-
-
-    handleChange = (e) => {
-      searchStockName(e.target.value)
-    }
-
-
-
+function App(props) {
 
   return (
     <>
@@ -25,29 +14,20 @@ function App() {
       <main>
         <Route path="/">
           <Header />
+      </Route>
           <Route path="/" exact>
-
-            <form>
-              <input type="text" placeholder="Enter a stock ticker" value={stockName} onChange={handleChange} />
-              <Link to={`/stockchoice/${stockName}`}>
-                <input type="submit" value="submit" />
-              </Link>
-            </form>
-          </Route>
-
-          <Route path="/stockchoice/:stock" >
-            <Stock name={stockName} />
-          </Route>
-
-          <Footer />
+            <Homepage />
         </Route>
+
+        <Route path="/stockchoice/:stock" >
+          <Stock history={props.history}/>
+          </Route>
+          <Footer />
       </main>
-      
-
-
-    </>
+  
+  </>
   );
 }
 
 
-export default App;
+export default withRouter(App);

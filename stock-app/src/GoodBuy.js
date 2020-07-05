@@ -2,8 +2,8 @@ import React, {useState, useEffect, Component } from 'react'
 
 export default function GoodBuy() {
   return (
-    <div>
-      <p className="buttons2"><strong>Is This a Good Buy?</strong></p>
+    <div className="buttons">
+      <button className="button2"><strong>Is This a Good Buy?</strong></button>
     </div>
   )
 }
