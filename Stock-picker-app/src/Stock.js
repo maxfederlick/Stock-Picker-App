@@ -22,10 +22,8 @@ function Stock(props) {
     const apiCall = async () => {
 
       const data = await axios(`https://cloud.iexapis.com/stable/stock/${props.stock}/batch?types=quote,news,chart&range=1m&last=10&token=pk_bd42dc5ddd804573b2e313f99b21a0a4`)
-      console.log(data.data)
 
       changeStockMetrics(data.data.quote)
-      console.log(stockMetrics)
 
       const mappedObjectNews = (data.data.news[0])
       const mappedObjectNews2 = (data.data.news[1])
