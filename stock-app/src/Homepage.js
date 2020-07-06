@@ -1,6 +1,6 @@
 import React, { useState, Params } from 'react';
 import { Route, Link } from 'react-router-dom'
-import Stock from "./Stock"
+
 
 export default function Homepage() {
 
@@ -19,7 +19,7 @@ export default function Homepage() {
       <form>
         <input type="text" placeholder="Enter a stock ticker" value={stockName} onChange={handleChange} />
         <Link to={`/stockchoice/${stockName}`}>
-          <input type="submit" value="submit" />
+          <input type="submit" value="Submit" />
         </Link>
       </form>
 

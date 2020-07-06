@@ -15,18 +15,19 @@ function App(props) {
       <main>
         <Route path="/">
           <Header />
-      </Route>
-          <Route path="/" exact>
-            <Homepage />
+        </Route>
+        <Route path="/" exact>
+          <Homepage />
         </Route>
 
-        <Route path="/stockchoice/:stock" >
-          <Stock />
-          </Route>
-          <Footer />
+        <Route path="/stockchoice/:stock" render={(props) => {
+          return (
+            <Stock stock={props.match.params.stock} />)
+        }} />
+        <Footer />
       </main>
-  
-  </>
+
+    </>
   );
 }
 

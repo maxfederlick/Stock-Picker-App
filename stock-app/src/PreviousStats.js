@@ -31,9 +31,9 @@ export default function PreviousStats(props) {
             <p>Open: {props.data.uOpen}</p>
             <p>Volume: {props.data.uVolume}</p>
           </div>
-          <button className="hide-button1" onClick={() =>setIsShown(false)}>Hide</button>
+          <button className="hide-button1" onClick={() => setIsShown(false)}>Hide</button>
         </div>
-        
+
 
       )}
     </div>
