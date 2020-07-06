@@ -22,6 +22,7 @@ export default function Homepage() {
           <input type="submit" value="submit" />
         </Link>
       </form>
+
     </div>
   )
 }

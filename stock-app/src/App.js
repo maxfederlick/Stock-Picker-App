@@ -21,7 +21,7 @@ function App(props) {
         </Route>
 
         <Route path="/stockchoice/:stock" >
-          <Stock data={props.match.params.stock}/>
+          <Stock />
           </Route>
           <Footer />
       </main>
