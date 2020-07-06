@@ -5,6 +5,9 @@ export default function PreviousStats(props) {
   let [prevStockMetrics, changePrevStockMetrics] = useState({})
   let [isShown, setIsShown] = useState(false)
 
+  const percentChange = props.data.changePercent
+  console.log(percentChange)
+
   return (
     <div>
       <div className="buttons">
@@ -18,8 +21,8 @@ export default function PreviousStats(props) {
         <div className="hidden-data">
           <div className="hidden-data1">
             <p>Date: {props.data.date}</p>
-            <p>Change:${props.data.change} ({props.data.changePercent}%)</p>
-            <p>Change over time: {props.data.changeOverTime}</p>
+            <p className={percentChange > 0 ? "green" : "red"}>Change: ${props.data.change} ({props.data.changePercent}%)</p>
+            <p className={percentChange > 0 ? "green" : "red"}>Change over time: {props.data.changeOverTime}</p>
             <p>High: {props.data.high}</p>
           </div>
           <div className="hidden-data2">
@@ -28,7 +31,9 @@ export default function PreviousStats(props) {
             <p>Open: {props.data.uOpen}</p>
             <p>Volume: {props.data.uVolume}</p>
           </div>
+          <button className="hide-button1" onClick={() =>setIsShown(false)}>Hide</button>
         </div>
+        
 
       )}
     </div>

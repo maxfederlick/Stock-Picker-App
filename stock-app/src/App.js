@@ -6,6 +6,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import Homepage from "./Homepage"
 
+
 function App(props) {
 
   return (
@@ -20,7 +21,7 @@ function App(props) {
         </Route>
 
         <Route path="/stockchoice/:stock" >
-          <Stock history={props.history}/>
+          <Stock data={props.match.params.stock}/>
           </Route>
           <Footer />
       </main>

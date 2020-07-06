@@ -18,14 +18,14 @@ function Stock(props) {
 
     const apiCall = async () => {
       
-      const data = await axios(`https://cloud.iexapis.com/stable/stock/msft/batch?types=quote,news,chart&range=1m&last=10&token=pk_bd42dc5ddd804573b2e313f99b21a0a4`)
+      const data = await axios(`https://cloud.iexapis.com/stable/stock/${props.data}/batch?types=quote,news,chart&range=1m&last=10&token=pk_bd42dc5ddd804573b2e313f99b21a0a4`)
       console.log(data.data)
 
       changeStockMetrics(data.data.quote)
+      console.log(stockMetrics)
 
       const mappedObjectNews = (data.data.news[0])
       const mappedObjectNews2 = (data.data.news[1])
-      console.log(mappedObjectNews2)
 
 
       changeStockNews(mappedObjectNews)
@@ -33,29 +33,28 @@ function Stock(props) {
 
       const prevDay = (data.data.chart[21])
       changePrevStockMetrics(prevDay)
-      console.log(prevDay)
     }
     apiCall()
 
   }, [])
 
-
+const percentChange = stockMetrics.changePercent
 
   return (
     <>
       <main>
-      <h2>{stockMetrics.companyName}</h2>
+      <h2 className={percentChange > 0 ? "green" : "red"}>{stockMetrics.companyName}</h2>
       <div className="metrics-container">
         <div className="metrics-container1">
           <p>Real Time Price ({stockMetrics.latestTime}): ${stockMetrics.iexRealtimePrice}</p>
           <p>Previous Close: ${stockMetrics.previousClose}</p>
-          <p>Change: ${stockMetrics.change} ({stockMetrics.changePercent}%)</p>
+          <p className={percentChange > 0 ? "green" : "red"}>Change: ${stockMetrics.change} ({stockMetrics.changePercent}%)</p>
           <p>52 Week High: ${stockMetrics.week52High}</p>
         </div>
 
         <div className="metrics-container2">
           <p>52 Week Low: ${stockMetrics.week52Low}</p>
-          <p>YTD Change: {stockMetrics.ytdChange}</p>
+          <p className={percentChange > 0 ? "green" : "red"}>YTD Change: ${stockMetrics.ytdChange}</p>
           <p>Average Daily Volume: {stockMetrics.avgTotalVolume}</p>
           <p>Previous Volume: {stockMetrics.previousVolume}</p>
         </div>
